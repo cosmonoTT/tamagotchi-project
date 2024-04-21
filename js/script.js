@@ -10,49 +10,67 @@ class Pet {
         // age = 0
     }
     
-    health = [0, " - " , 10]
+    health = [10, 10]
 
-    hunger = [0, " - ", 10]
+    hunger = [5, 10]
 
-    sleepiness = [0, " - ", 10]
+    sleepiness = [5, 10]
 
-    boredom = [0, " - ", 10]
+    boredom = [5, 10]
 
     age = [0]
+
+    feed() {
+        // hungerElement.innerHTML = tamagotchi.hunger[0]--
+        if(tamagotchi.hunger[0] >= 0 ){
+            hungerElement.innerHTML = tamagotchi.hunger[0]--
+        }else{
+            alert("your pet is full!")
+        }
+    }
+
+    play() { 
+        boredomElement.innerHTML = tamagotchi.boredom[0]--
+        sleepinessElement.innerHTMl = tamagotchi.sleepiness[0]++
+        hungerElement.innerHTML = tamagotchi.hunger[0]++
+    }
+
 }
+
 // instantiating my new tamagotchi
 const tamagotchi = new Pet("")
-// letting the user choose their pet's name
-// const petName = prompt("What would you like to name your Tamagotchi?")
-// assigning variables to my class instantiation
-// petName = tamagotchi.name
-// petHealth = tamagotchi.health[0] + tamagotchi.health[1] + tamagotchi.health[2]
-// petBoredom = tamagotchi.boredom[0] + tamagotchi.boredom[1] + tamagotchi.boredom[2]
-// petAge = tamagotchi.Age
+
 // this is where the user can change the pet's name
 petName = prompt("What would you like to name your pet?")
 
 // assigning the document element to display the variables
 const nameElement = document.getElementById("name")
+
 // changing the HTML to display the petname
-nameElement.innerHTML = petName
+nameElement.innerHTML = "Name " + petName
 
-petHunger = tamagotchi.hunger[0] + tamagotchi.hunger[1] + tamagotchi.hunger[2]
+// below displays the metrics of your pet
 const hungerElement = document.getElementById("hunger")
-hungerElement.innerHTML = "Hunger = " + petHunger
+hungerElement.innerHTML = "hunger " + tamagotchi.hunger[0]
 
-petSleepiness = tamagotchi.sleepiness[0] + tamagotchi.sleepiness[1] + tamagotchi.sleepiness[2]
 const sleepinessElement = document.getElementById("sleepiness")
-sleepinessElement.innerHTML = "Sleepiness = " + petSleepiness
+sleepinessElement.innerHTML = "sleepiness " + tamagotchi.sleepiness[0]
 
-petBoredom = tamagotchi.boredom[0] + tamagotchi.boredom[1] + tamagotchi.boredom[2]
 const boredomElement = document.getElementById("boredom")
-boredomElement.innerHTML = "Boredom = " + petBoredom
+boredomElement.innerHTML = "boredom " + tamagotchi.boredom[0]
 
-petAge = tamagotchi.age
 const ageElement = document.getElementById("age")
-ageElement.innerHTML = "Age = " + petAge
+ageElement.innerHTML = "age " + tamagotchi.age
 
+// assigning functions to the buttons in my HTML file
+const feedElement = document.getElementById("feed")
+feedElement.addEventListener("click", tamagotchi.feed)
+
+const playElement = document.getElementById("play")
+playElement.addEventListener("click", tamagotchi.play)
+
+const lightsElement = document.getElementById("lights")
+lightsElement.addEventListener("click", tamagotchi.lights)
 
 
 // my code graveyard
