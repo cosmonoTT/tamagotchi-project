@@ -1,11 +1,11 @@
 
 body {
-    /* font code was copied directly from google's page! */
-    font-family: "Pixelify Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bold;
+    /* font code was copied directly from adobe fonts! */
+    font-family: "Rubik Iso", system-ui;
+    font-weight: 400;
     font-style: normal;
     height: 40px;
+    background-color: #FBDCE2;
 }
 
 .circle {
@@ -64,7 +64,7 @@ p {
     justify-content: flex-start;
     align-items: end;
     line-height: 20px;
-    font-family: "Pixelify Sans", sans-serif;
+    font-family: "Rubik Iso", system-ui;
     font-size: 15px;
 
 }
