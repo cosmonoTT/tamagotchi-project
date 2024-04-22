@@ -45,7 +45,7 @@ h1 {
     left: 15%;
     right: 15%;
     bottom: 15%;
-    border-radius: 10%;
+    border-radius: 5%;
     border-color: #4C3B4D;
 }
 
@@ -65,7 +65,8 @@ p {
     align-items: end;
     line-height: 20px;
     font-family: "Pixelify Sans", sans-serif;
-    font-size: 30px;
+    font-size: 15px;
+
 }
 
 .buttons {

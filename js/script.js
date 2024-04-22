@@ -40,13 +40,7 @@ class Pet {
     }
 
     lights() {
-        if(tamagotchi.sleepiness[0] === 0){
-            alert("your pet isn't sleepy")
-        }else if(tamagotchi.sleepiness[0] === tamagotchi.sleepiness[1]){
-            alert("Your Tamagotchi died of sleep deprivation")
-        }else{
-            sleepinessElement.innerHTML = tamagotchi.sleepiness[0]--
-        }
+        setInterval(sleepinessElement.innerHTML = tamagotchi.sleepiness[0]--, 1000)
     }
 // a function that ages the pet up
     ageUp() {
@@ -57,6 +51,31 @@ class Pet {
             alert("Your pet died of old age!")
         }
     }
+// a function that increases the pet's hunger
+    hungerUp() {
+        if(tamagotchi.hunger[0] < tamagotchi.hunger[1]){
+            hungerElement.innerHTML = tamagotchi.hunger[0]++
+        }else{
+            alert("Your tamagotchi died of Hunger!")
+        }
+    }
+    // a function that increases the pet's boredom
+    boredomUp() {
+        if(tamagotchi.boredom[0] < tamagotchi.boredom[1]){
+            boredomElement.innerHTML = tamagotchi.boredom[0]++
+        }else{
+            alert("Your tamagotchi died of Boredom!")
+        }
+    }
+
+    sleepUp() {
+        if(tamagotchi.sleepiness[0] < tamagotchi.sleepiness[1]){
+            sleepinessElement.innerHTML = tamagotchi.sleep[0]++
+        }else{
+            alert("Your tamagotchi died of sleep deprivation!")
+        }
+    }
+
 }
 
 // instantiating my new tamagotchi
@@ -74,16 +93,22 @@ nameElement.innerHTML =  petName
 // below displays the metrics of your pet
 const hungerElement = document.getElementById("hunger")
 hungerElement.innerHTML = tamagotchi.hunger[0]
+// invoking my hunger function every 30 seconds
+setInterval(tamagotchi.hungerUp, 30000)
 
 const sleepinessElement = document.getElementById("sleepiness")
 sleepinessElement.innerHTML = tamagotchi.sleepiness[0]
+// this is the function that will make the pet sleepy as time goes on
+setInterval(tamagotchi.sleepUp, 100000)
 
 const boredomElement = document.getElementById("boredom")
 boredomElement.innerHTML = tamagotchi.boredom[0]
+// this will make the pet more bored every 15 minutes or so(it should be hard to die of boredom)
+setInterval(tamagotchi.boredomUp, 1000000)
 
 const ageElement = document.getElementById("age")
 ageElement.innerHTML = tamagotchi.age
-// this is the function that will allow the 
+// this is the function that will age up the pet every minute
 setInterval(tamagotchi.ageUp, 60000)
 
 const healthElement = document.getElementById("health")
