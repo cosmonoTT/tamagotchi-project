@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- code for the font was copied directly from google fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&family=Poiret+One&display=swap" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +11,22 @@
     <title>Tamagotchi Project</title>
 </head>
 <body>
-    <main id="container">
-    <h1>Tamagotchi Project</h1>
-    <h2></h2>
-    <h3>pet stats</h3>
-    <p id="name"></p>
-    <p id="health"></p>
-    <p id="hunger"></p>
-    <p id="sleepiness"></p>
-    <p id="boredom"></p>
-    <p id="age"></p>
-    <button id="feed"></button>
-    <button id="lights"></button>
-    <button id="play"></button>
-    <script src="js/script.js"></script>
-    </main>
-
+    <div class="circle">
+        <h1>Tamagotchi</h1>
+        <div class="square">
+                <p class="stats" id="name"></p>
+                <p class="stats" id="health"></p>
+                <p class="stats" id="hunger"></p>
+                <p class="stats" id="sleepiness"></p>
+                <p class="stats" id="boredom"></p>
+                <p class="stats" id="age"></p>
+            <div class="buttons">
+                <button id="feed"><p>FEED</p></button>
+                <button id="lights"><p>TURN OFF LIGHTS</p></button>
+                <button id="play"><p>PLAY</p></button>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>    
 </body>
 </html>
