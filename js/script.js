@@ -13,7 +13,7 @@ class Pet {
 
     boredom = [5, 10]
 
-    age = [0]
+    age = 0
 // this is my first function that feeds the pet
     feed() {
         // if the tamagotchi's hunger is 0
@@ -48,7 +48,15 @@ class Pet {
             sleepinessElement.innerHTML = tamagotchi.sleepiness[0]--
         }
     }
-
+// a function that ages the pet up
+    ageUp() {
+        //giving my pet an age limit
+        if(tamagotchi.age <= 10){
+            ageElement.innerHTML = tamagotchi.age++
+        }else{
+            alert("Your pet died of old age!")
+        }
+    }
 }
 
 // instantiating my new tamagotchi
@@ -75,6 +83,8 @@ boredomElement.innerHTML = tamagotchi.boredom[0]
 
 const ageElement = document.getElementById("age")
 ageElement.innerHTML = tamagotchi.age
+// this is the function that will allow the 
+setInterval(tamagotchi.ageUp, 60000)
 
 const healthElement = document.getElementById("health")
 healthElement.innerHTML = tamagotchi.health[0]
@@ -113,3 +123,11 @@ lightsElement.addEventListener("click", tamagotchi.lights)
     // announceAge() { 
     //     alert(this.age)
     // }
+
+    // i tried doing a setInterval to age up the pet
+    // const ageUpElement = document.getElementById("age")
+// ageUpElement.innerHTML = setInterval(tamagotchi.age[0]++, 100)
+
+// invoking my ageup() function, with a setInterval so it can work every x seconds
+// i now know this didn't work because the first argument expected is meant to be a function, so i don't need the paranthesis
+// setInterval(tamagotchi.ageUp(), 5000)
