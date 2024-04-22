@@ -5,25 +5,26 @@ class Pet {
         name = this.name
     }
     
-    health = [10, 10]
+    health = [10, 10, "dead"]
 
-    hunger = [5, 10]
+    hunger = [5, 10, "dead"]
 
-    sleepiness = [5, 10]
+    sleepiness = [5, 10, "dead"]
 
-    boredom = [5, 10]
+    boredom = [5, 10, "dead"]
 
-    age = [0, 10, 20]
+    age = [0, 10, 20, "dead"]
 // this is my first function that feeds the pet
     feed() {
         // if the tamagotchi's hunger is 0
         if(tamagotchi.hunger[0] === 0){
             // alert "your pet is full"
-            alert("your pet is full!")
+            alert(petName + " is full!")
             // else if tamagotchi's hunger is 10
         }else if(tamagotchi.hunger[0] === tamagotchi.hunger[1]){
             // your pet died :(
-            alert(tamagotchi.name + " died :(")
+            alert(petName + " died :(")
+
         }else{
             hungerElement.innerHTML = tamagotchi.hunger[0]--
         }
@@ -33,9 +34,9 @@ class Pet {
         // this establishes that the button can't be pressed if the index of 0 is equal to zero
         // i did this to keep the page from displaying negative numbers
         if(tamagotchi.boredom[0] === 0) {
-            alert(tamagotchi.name + " is done playing for now.")
+            alert(petName + " is done playing for now.")
         }else if(tamagotchi.boredom[0] === tamagotchi.boredom[1]){
-            alert(tamagotchi.name + " died of boredom! :(")
+            alert(petName + " died of boredom! :(")
         }else{
             boredomElement.innerHTML = tamagotchi.boredom[0]--
         }
@@ -44,7 +45,7 @@ class Pet {
     lights() {
         
         if(tamagotchi.sleepiness[0] === 0){
-            alert(tamagotchi.name + " isn't tired right now.")
+            alert(petName + " isn't tired right now.")
         }else{
             sleepinessElement.innerHTML = tamagotchi.sleepiness[0]--
         }
@@ -57,9 +58,15 @@ class Pet {
             // this establishes the age that the pet will age up at
         }else if(tamagotchi.age[0] === tamagotchi.age[1]){
             ageElement.innerHTML = tamagotchi.age[0]++
-            alert(tamagotchi.name + " has become an adult!")
+            alert(petName + " has become an adult!")
         }else{
-            alert(tamagotchi.name + " has died of old age! :(")
+            // this will change all the values of the metrics displayed to show the value of "dead"
+            ageElement.innerHTML = tamagotchi.age[3]
+            boredomElement.innerHTML = tamagotchi.boredom[2]
+            sleepinessElement.innerHTML = tamagotchi.sleepiness[2]
+            hungerElement.innerHTML = tamagotchi.hunger[2]
+            healthElement.innerHTML = tamagotchi.health[2]
+            alert(petName + " has died of old age! You were a good parent. :(")
         }
     }
 // a function that increases the pet's hunger
@@ -68,7 +75,12 @@ class Pet {
         if(tamagotchi.hunger[0] < tamagotchi.hunger[1]){
             hungerElement.innerHTML = tamagotchi.hunger[0]++
         }else{
-            alert(tamagotchi.name + " died of Hunger! :(")
+            ageElement.innerHTML = tamagotchi.age[3]
+            boredomElement.innerHTML = tamagotchi.boredom[2]
+            sleepinessElement.innerHTML = tamagotchi.sleepiness[2]
+            hungerElement.innerHTML = tamagotchi.hunger[2]
+            healthElement.innerHTML = tamagotchi.health[2]
+            alert(petName + " has died of hunger! You're the worst person ever, and you should think about your actions!")
         }
     }
     // a function that increases the pet's boredom
@@ -76,7 +88,12 @@ class Pet {
         if(tamagotchi.boredom[0] < tamagotchi.boredom[1]){
             boredomElement.innerHTML = tamagotchi.boredom[0]++
         }else{
-            alert(tamagotchi.name + " died of Boredom! :(")
+            ageElement.innerHTML = tamagotchi.age[3]
+            boredomElement.innerHTML = tamagotchi.boredom[2]
+            sleepinessElement.innerHTML = tamagotchi.sleepiness[2]
+            hungerElement.innerHTML = tamagotchi.hunger[2]
+            healthElement.innerHTML = tamagotchi.health[2]
+            alert(petName + " has died of boredom! Congratulations, you found the secret ending!")
         }
     }
 
@@ -84,7 +101,12 @@ class Pet {
         if(tamagotchi.sleepiness[0] < tamagotchi.sleepiness[1]){
             sleepinessElement.innerHTML = tamagotchi.sleepiness[0]++
         }else{
-            alert(tamagotchi.name + " died of sleep deprivation! :(")
+            ageElement.innerHTML = tamagotchi.age[3]
+            boredomElement.innerHTML = tamagotchi.boredom[2]
+            sleepinessElement.innerHTML = tamagotchi.sleepiness[2]
+            hungerElement.innerHTML = tamagotchi.hunger[2]
+            healthElement.innerHTML = tamagotchi.health[2]
+            alert(petName + " has died of sleep deprivation! Was it that hard to turn off the lights?")
         }
     }
 
@@ -94,7 +116,7 @@ class Pet {
 const tamagotchi = new Pet("")
 
 // this is where the user can change the pet's name
-petName = prompt("What would you like to name your pet?")
+const petName = prompt("What would you like to name your pet?")
 
 // assigning the document element to display the variables
 const nameElement = document.getElementById("name")
@@ -111,17 +133,17 @@ setInterval(tamagotchi.hungerUp, 6000)
 const sleepinessElement = document.getElementById("sleepiness")
 sleepinessElement.innerHTML = tamagotchi.sleepiness[0]
 // this is the function that will make the pet sleepy as time goes on
-setInterval(tamagotchi.sleepUp, 6000)
+setInterval(tamagotchi.sleepUp, 600000)
 
 const boredomElement = document.getElementById("boredom")
 boredomElement.innerHTML = tamagotchi.boredom[0]
 // this will make the pet more bored every 15 minutes or so(it should be hard to die of boredom)
-setInterval(tamagotchi.boredomUp, 6000)
+setInterval(tamagotchi.boredomUp, 600000)
 
 const ageElement = document.getElementById("age")
 ageElement.innerHTML = tamagotchi.age[0]
 // this is the function that will age up the pet every few minutes
-setInterval(tamagotchi.ageUp, 6000)
+setInterval(tamagotchi.ageUp, 600)
 
 const healthElement = document.getElementById("health")
 healthElement.innerHTML = tamagotchi.health[0]
