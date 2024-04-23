@@ -47,12 +47,20 @@ h1 {
     bottom: 15%;
     border-radius: 5%;
     border-color: #4C3B4D;
+    font-family: "Jersey 25", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.metrics {
+    position: relative;
+    display: flex;
 }
 
 .stats {
     display: flex;
     flex-direction: space-between;
-    height: 10px;
+    height: 10px; */
     left: 10%;
     right: 80%;
     top: 10px;
@@ -64,9 +72,15 @@ p {
     justify-content: flex-start;
     align-items: end;
     line-height: 20px;
-    font-family: "Rubik Iso", system-ui;
-    font-size: 15px;
+    font-family: "Jersey 25", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
 
+img {
+    position: relative;
+    top: -60%;
+    bottom: 20;
 }
 
 .buttons {
@@ -77,6 +91,7 @@ p {
     top: 80%;
     flex-direction: row;
     justify-content: space-around;
+    line-height: 30px;
 }
 
 #feed {
