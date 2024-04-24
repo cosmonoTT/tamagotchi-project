@@ -24,9 +24,13 @@ class Pet {
         }else if(tamagotchi.hunger[0] === tamagotchi.hunger[1]){
             // your pet died :(
             alert(petName + " died :(")
-
         }else{
-            hungerElement.innerHTML = tamagotchi.hunger[0]--
+            if(document.getElementById("regular").src === "https://i.giphy.com/nrY3TgN3JNbUs.webp"){
+                hungerElement.innerHTML = tamagotchi.hunger[0]--
+                document.getElementById("regular").src = "https://i.giphy.com/1iqhMAmOgfQRd9M5Va.webp"
+            }else{
+                changeImageBack()
+            }
         }
     }
 
@@ -38,15 +42,26 @@ class Pet {
         }else if(tamagotchi.boredom[0] === tamagotchi.boredom[1]){
             alert(petName + " died of boredom! :(")
         }else{
-            boredomElement.innerHTML = tamagotchi.boredom[0]--
+            if(document.getElementById("regular").src === "https://i.giphy.com/nrY3TgN3JNbUs.webp"){
+                boredomElement.innerHTML = tamagotchi.boredom[0]--
+                document.getElementById("regular").src = "https://i.giphy.com/nPu9aQYq1dQbu.webp"
+            }else{
+                changeImageBack()
+            }
         }
     }
 
     lights() {
         if(tamagotchi.sleepiness[0] === 0){
             alert(petName + " isn't tired right now.")
+            changeImageBack()
         }else{
+            if(document.getElementById("regular").src === "https://i.giphy.com/nrY3TgN3JNbUs.webp") {
             sleepinessElement.innerHTML = tamagotchi.sleepiness[0]--
+            document.getElementById("regular").src = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWp4aW1xNjU0YnJ4MGxkeHY0Y3RuaWQ2ajhxOGpidzEwOHd0aG82ciZlcD12MV9naWZzX3NlYXJjaCZjdD1z/oaCM98FQcTl5qbs4kb/giphy.webp"
+            }else{
+                changeImageBack()
+            }
         }
     }
 // a function that ages the pet up
@@ -159,6 +174,10 @@ playElement.addEventListener("click", tamagotchi.play)
 const lightsElement = document.getElementById("lights")
 lightsElement.addEventListener("click", tamagotchi.lights)
 
+function changeImageBack() {
+    document.getElementById("regular").src = "https://i.giphy.com/nrY3TgN3JNbUs.webp"
+}
+
 
 // my code graveyard
 
@@ -191,3 +210,21 @@ lightsElement.addEventListener("click", tamagotchi.lights)
 // invoking my ageup() function, with a setInterval so it can work every x seconds
 // i now know this didn't work because the first argument expected is meant to be a function, so i don't need the paranthesis
 // setInterval(tamagotchi.ageUp(), 5000)
+
+// a conditional statement that will change the image displayed on screen
+// const displayImage = document.getElementById("regular")
+// if(document.getElementbyID("feed").clicked == true){
+//     alert("feed button was clicked!")
+// }
+
+// // const imageElement = document.getElementById("regular")
+// function changeImageToFeed() {
+//     document.getElementById("regular").style.display = "hide"
+//     document.getElementById("eating").style.display = "contents"
+// }
+
+// if(document.querySelector("img") === document.getElementById("regular")) {
+//     document.getElementById.apply("eating").style.display = "hide"
+// }
+
+// if(document.querySelector("img" === document.getElementById("")))

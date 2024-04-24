@@ -77,11 +77,19 @@ p {
     font-style: normal;
 }
 
-img {
+#regular {
     position: relative;
     top: -60%;
     bottom: 20;
 }
+
+/* .show {  
+    display: contents;
+} */
+
+/* .hide {
+    display: none;
+} */
 
 .buttons {
     position: absolute;
