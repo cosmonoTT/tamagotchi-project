@@ -25,10 +25,16 @@ class Pet {
             // your pet died :(
             alert(petName + " died :(")
         }else{
+            // if the image displayed is the same as the one referenced in the HTML
             if(document.getElementById("regular").src === "https://i.giphy.com/nrY3TgN3JNbUs.webp"){
+                // then subract from the hunger
                 hungerElement.innerHTML = tamagotchi.hunger[0]--
+                // change the source to a different gif
                 document.getElementById("regular").src = "https://i.giphy.com/1iqhMAmOgfQRd9M5Va.webp"
+                // and after 15 seconds, revert to normal settings
+                setTimeout(changeImageBack, 15000)
             }else{
+                // this is a toggle for the button, so you can switch between modes
                 changeImageBack()
             }
         }
@@ -45,6 +51,7 @@ class Pet {
             if(document.getElementById("regular").src === "https://i.giphy.com/nrY3TgN3JNbUs.webp"){
                 boredomElement.innerHTML = tamagotchi.boredom[0]--
                 document.getElementById("regular").src = "https://i.giphy.com/nPu9aQYq1dQbu.webp"
+                setTimeout(changeImageBack, 15000)
             }else{
                 changeImageBack()
             }
@@ -59,6 +66,7 @@ class Pet {
             if(document.getElementById("regular").src === "https://i.giphy.com/nrY3TgN3JNbUs.webp") {
             sleepinessElement.innerHTML = tamagotchi.sleepiness[0]--
             document.getElementById("regular").src = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWp4aW1xNjU0YnJ4MGxkeHY0Y3RuaWQ2ajhxOGpidzEwOHd0aG82ciZlcD12MV9naWZzX3NlYXJjaCZjdD1z/oaCM98FQcTl5qbs4kb/giphy.webp"
+            setTimeout(changeImageBack, 15000)
             }else{
                 changeImageBack()
             }
@@ -81,6 +89,7 @@ class Pet {
             hungerElement.innerHTML = tamagotchi.hunger[2]
             healthElement.innerHTML = tamagotchi.health[2]
             alert(petName + " has died of old age! You were a good parent. :(")
+            document.getElementById("regular").src = "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"
         }
     }
 // a function that increases the pet's hunger
@@ -95,6 +104,7 @@ class Pet {
             hungerElement.innerHTML = tamagotchi.hunger[2]
             healthElement.innerHTML = tamagotchi.health[2]
             alert(petName + " has died of hunger! You're the worst person ever, and you should think about your actions!")
+            document.getElementById("regular").src = "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"
         }
     }
     // a function that increases the pet's boredom
@@ -108,6 +118,7 @@ class Pet {
             hungerElement.innerHTML = tamagotchi.hunger[2]
             healthElement.innerHTML = tamagotchi.health[2]
             alert(petName + " has died of boredom! Congratulations, you found the secret ending!")
+            document.getElementById("regular").src = "https://media3.giphy.com/media/E51rI2c3s5zGg/200w.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=200w.webp&ct=s"
         }
     }
 
@@ -121,6 +132,7 @@ class Pet {
             hungerElement.innerHTML = tamagotchi.hunger[2]
             healthElement.innerHTML = tamagotchi.health[2]
             alert(petName + " has died of sleep deprivation! Was it that hard to turn off the lights?")
+            document.getElementById("regular").src = "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"
         }
     }
 
@@ -159,6 +171,7 @@ setInterval(tamagotchi.boredomUp, 300000)
 const ageElement = document.getElementById("age")
 ageElement.innerHTML = tamagotchi.age[0]
 // this is the function that will age up the pet every few minutes
+// an if statement that says if he is dead, he can't be aged
 setInterval(tamagotchi.ageUp, 120000)
 
 const healthElement = document.getElementById("health")
