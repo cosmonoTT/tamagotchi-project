@@ -14,8 +14,12 @@ class Pet {
     boredom = [5, 10, "dead"]
 
     age = [0, 10, 20, "dead"]
+
+    alive = true
+
 // this is my first function that feeds the pet
     feed() {
+        // these first conditionals are only to keep the page from displaying negative numbers or numbers greater than 10
         // if the tamagotchi's hunger is 0
         if(tamagotchi.hunger[0] === 0){
             // alert "your pet is full"
@@ -25,7 +29,8 @@ class Pet {
             // your pet died :(
             alert(petName + " died :(")
         }else{
-            // if the image displayed is the same as the one referenced in the HTML
+            // this second part of the conditional for each of the buttons changes the image displayed on the browser page
+             // if the image displayed is the same as the one referenced in the HTML
             if(document.getElementById("regular").src === "https://i.giphy.com/nrY3TgN3JNbUs.webp"){
                 // then subract from the hunger
                 hungerElement.innerHTML = tamagotchi.hunger[0]--
@@ -42,6 +47,7 @@ class Pet {
                 setTimeout(changeImageToEvolved, 15000)
                 // making sure the button can be pressed multiple times after the pet reaches adulthood
             }else if(tamagotchi.age[0] >= tamagotchi.age[1]){
+                // these are 2 callbacks to functions i declared in this JS file
                 changeImageToEvolved()
             }else{
                 // this is a toggle for the button, so you can switch between modes
@@ -51,8 +57,6 @@ class Pet {
     }
 
     play() { 
-        // this establishes that the button can't be pressed if the index of 0 is equal to zero
-        // i did this to keep the page from displaying negative numbers
         if(tamagotchi.boredom[0] === 0) {
             alert(petName + " is done playing for now.")
         }else if(tamagotchi.boredom[0] === tamagotchi.boredom[1]){
@@ -123,13 +127,15 @@ class Pet {
 // a function that ages the pet up
     ageUp() {
         //giving my pet an age limit
-        if(tamagotchi.age[0] < tamagotchi.age[1] && document.getElementById("regular") !== "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"){
+        if(tamagotchi.age[0] < tamagotchi.age[1]){
+            // this adds 1 to the age every time the function is invoked in the setInterval()
             ageElement.innerHTML = tamagotchi.age[0]++
             // this establishes the age that the pet will age up at
         }else if(tamagotchi.age[0] === tamagotchi.age[1] && tamagotchi.age[0] <= tamagotchi.age[2]){
             ageElement.innerHTML = tamagotchi.age[0]++
             alert(petName + " has become an adult!")
         }else if(tamagotchi.age[0] >= tamagotchi.age[1] && tamagotchi.age[0] < tamagotchi.age[2]){
+            // this changes the sprite to the aged up version
             ageElement.innerHTML = tamagotchi.age[0]++
             document.getElementById("regular").src = "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"
         }else{
@@ -145,7 +151,7 @@ class Pet {
 // a function that increases the pet's hunger
     hungerUp() {
         // i wanted to use arrays so that way i could change the amount of the second array position, without needing to modify my functions in multiple places if i wanted to extend the game to be longer
-        if(tamagotchi.hunger[0] < tamagotchi.hunger[1] && document.getElementById("regular") !== "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"){
+        if(tamagotchi.hunger[0] < tamagotchi.hunger[1]){
             hungerElement.innerHTML = tamagotchi.hunger[0]++
         }else{
             ageElement.innerHTML = tamagotchi.age[3]
@@ -153,27 +159,23 @@ class Pet {
             sleepinessElement.innerHTML = tamagotchi.sleepiness[2]
             hungerElement.innerHTML = tamagotchi.hunger[2]
             healthElement.innerHTML = tamagotchi.health[2]
-            alert(petName + " has died of hunger! You're the worst person ever, and you should think about your actions!")
+            alert(petName + " has died of hunger!")
             document.getElementById("regular").src = "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"
         }
     }
     // a function that increases the pet's boredom
     boredomUp() {
-        if(tamagotchi.boredom[0] < tamagotchi.boredom[1] && document.getElementById("regular") !== "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"){
+        if(tamagotchi.boredom[0] < tamagotchi.boredom[1]){
             boredomElement.innerHTML = tamagotchi.boredom[0]++
         }else{
-            ageElement.innerHTML = tamagotchi.age[3]
-            boredomElement.innerHTML = tamagotchi.boredom[2]
-            sleepinessElement.innerHTML = tamagotchi.sleepiness[2]
-            hungerElement.innerHTML = tamagotchi.hunger[2]
-            healthElement.innerHTML = tamagotchi.health[2]
             alert(petName + " has died of boredom! Congratulations, you found the secret ending!")
             document.getElementById("regular").src = "https://media3.giphy.com/media/E51rI2c3s5zGg/200w.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=200w.webp&ct=s"
+            return tamagotchi.alive === false
         }
     }
-
+// a function that increases the pet's sleep
     sleepUp() {
-        if(tamagotchi.sleepiness[0] < tamagotchi.sleepiness[1] && document.getElementById("regular") !== "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"){
+        if(tamagotchi.sleepiness[0] < tamagotchi.sleepiness[1]){
             sleepinessElement.innerHTML = tamagotchi.sleepiness[0]++
         }else{
             ageElement.innerHTML = tamagotchi.age[3]
@@ -185,7 +187,7 @@ class Pet {
             document.getElementById("regular").src = "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"
         }
     }
-
+// a function that decreases the pet's health (just to make it more fun!)
     healthDown() {
         if(tamagotchi.health[0] > tamagotchi.health[1] && document.getElementById("regular") !== "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"){
             healthElement.innerHTML = tamagotchi.health[0]--
@@ -200,9 +202,20 @@ class Pet {
             document.getElementById("regular").src = "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"
         }
     }
+// this function is meant to check whether or not the pet is alive
+    checkAlive() {
+    if(this.alive === false){
+        ageElement.innerHTML = tamagotchi.age[3]
+        boredomElement.innerHTML = tamagotchi.boredom[2]
+        sleepinessElement.innerHTML = tamagotchi.sleepiness[2]
+        hungerElement.innerHTML = tamagotchi.hunger[2]
+        healthElement.innerHTML = tamagotchi.health[2]
+        document.getElementById("regular").src = "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"
+    }else{
 
+        }
+    }
 }
-
 // instantiating my new tamagotchi
 const tamagotchi = new Pet("")
 
@@ -239,6 +252,9 @@ ageElement.innerHTML = tamagotchi.age[0]
 // an if statement that says if he is dead, he can't be aged
 setInterval(tamagotchi.ageUp, 30000)
 
+// an interval that checks if the tamagotchi is alive
+setInterval(tamagotchi.checkAlive, 1000)
+// declaring where health will be displayed in the DOM
 const healthElement = document.getElementById("health")
 healthElement.innerHTML = tamagotchi.health[0]
 
@@ -254,7 +270,7 @@ lightsElement.addEventListener("click", tamagotchi.lights)
 
 const workoutElement = document.getElementById("workout")
 workoutElement.addEventListener("click", tamagotchi.workout)
-
+// a function to change the image back to be invoked in the button function conditional statements
 function changeImageBack() {
     document.getElementById("regular").src = "https://i.giphy.com/nrY3TgN3JNbUs.webp"
 }
@@ -265,10 +281,6 @@ function changeImageToEvolved() {
 
 // adding an interval to activate the healthdown function to simulate polution
 setInterval(tamagotchi.healthDown, 60000)
-
-// if(document.getElementById("age") === 10){
-//     document.getElementById("regular").src = "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"
-// }
 
 // my code graveyard
 
@@ -339,3 +351,7 @@ setInterval(tamagotchi.healthDown, 60000)
 // }
 // 
     
+// tamagotchi.hunger
+// if(document.getElementById("age") === 10){
+//     document.getElementById("regular").src = "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"
+// }
