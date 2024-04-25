@@ -33,6 +33,16 @@ class Pet {
                 document.getElementById("regular").src = "https://i.giphy.com/1iqhMAmOgfQRd9M5Va.webp"
                 // and after 15 seconds, revert to normal settings
                 setTimeout(changeImageBack, 15000)
+                // if the image displayed is the evolved image
+            }else if(document.getElementById("regular").src === "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"){
+                // then do the same thing as before
+                hungerElement.innerHTML = tamagotchi.hunger[0]--
+                document.getElementById("regular").src = "https://i.giphy.com/1iqhMAmOgfQRd9M5Va.webp"
+                // but change the image back to evolved
+                setTimeout(changeImageToEvolved, 15000)
+                // making sure the button can be pressed multiple times after the pet reaches adulthood
+            }else if(tamagotchi.age[0] >= tamagotchi.age[1]){
+                changeImageToEvolved()
             }else{
                 // this is a toggle for the button, so you can switch between modes
                 changeImageBack()
@@ -52,6 +62,12 @@ class Pet {
                 boredomElement.innerHTML = tamagotchi.boredom[0]--
                 document.getElementById("regular").src = "https://i.giphy.com/nPu9aQYq1dQbu.webp"
                 setTimeout(changeImageBack, 15000)
+            }else if(document.getElementById("regular").src === "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"){
+                boredomElement.innerHTML = tamagotchi.boredom[0]--
+                document.getElementById("regular").src = "https://i.giphy.com/nPu9aQYq1dQbu.webp"
+                setTimeout(changeImageToEvolved, 15000)
+            }else if(tamagotchi.age[0] >= tamagotchi.age[1]){
+                changeImageToEvolved()
             }else{
                 changeImageBack()
             }
@@ -67,6 +83,12 @@ class Pet {
             sleepinessElement.innerHTML = tamagotchi.sleepiness[0]--
             document.getElementById("regular").src = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWp4aW1xNjU0YnJ4MGxkeHY0Y3RuaWQ2ajhxOGpidzEwOHd0aG82ciZlcD12MV9naWZzX3NlYXJjaCZjdD1z/oaCM98FQcTl5qbs4kb/giphy.webp"
             setTimeout(changeImageBack, 15000)
+            }else if(document.getElementById("regular").src === "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"){
+                sleepinessElement.innerHTML = tamagotchi.sleepiness[0]--
+            document.getElementById("regular").src = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWp4aW1xNjU0YnJ4MGxkeHY0Y3RuaWQ2ajhxOGpidzEwOHd0aG82ciZlcD12MV9naWZzX3NlYXJjaCZjdD1z/oaCM98FQcTl5qbs4kb/giphy.webp"
+            setTimeout(changeImageToEvolved, 15000)
+            }else if(tamagotchi.age[0] > tamagotchi.age[1]){
+                changeImageToEvolved()
             }else{
                 changeImageBack()
             }
@@ -78,17 +100,30 @@ class Pet {
                 if(document.getElementById("regular").src === "https://i.giphy.com/nrY3TgN3JNbUs.webp"){
                 healthElement.innerHTML = tamagotchi.health[0]++
                 document.getElementById("regular").src = "https://media4.giphy.com/media/xOcAp5kMjBlHvp53gw/giphy.webp?cid=ecf05e477wku79zdx2x9pe1en5vausp72yx5sgwigmhywlso&ep=v1_gifs_search&rid=giphy.webp&ct=s"
+                setTimeout(changeImageBack, 15000)
+            }else if(document.getElementById("regular").src === "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"){
+                healthElement.innerHTML = tamagotchi.health[0]++
+                document.getElementById("regular").src = "https://media4.giphy.com/media/xOcAp5kMjBlHvp53gw/giphy.webp?cid=ecf05e477wku79zdx2x9pe1en5vausp72yx5sgwigmhywlso&ep=v1_gifs_search&rid=giphy.webp&ct=s"
+                setTimeout(changeImageToEvolved, 15000)
+            }else if(tamagotchi.age[0] > tamagotchi.age[1]){
+                changeImageToEvolved()
             }else{
                 changeImageBack()
             }
         }else{
-            changeImageBack()
+            ageElement.innerHTML = tamagotchi.age[3]
+            boredomElement.innerHTML = tamagotchi.boredom[2]
+            sleepinessElement.innerHTML = tamagotchi.sleepiness[2]
+            hungerElement.innerHTML = tamagotchi.hunger[2]
+            healthElement.innerHTML = tamagotchi.health[2]
+            alert("You have overworked" + petName +"! You're the worst person ever, and you should think about your actions!")
+            document.getElementById("regular").src = "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"
         }
     }
 // a function that ages the pet up
     ageUp() {
         //giving my pet an age limit
-        if(tamagotchi.age[0] < tamagotchi.age[1]){
+        if(tamagotchi.age[0] < tamagotchi.age[1] && document.getElementById("regular") !== "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"){
             ageElement.innerHTML = tamagotchi.age[0]++
             // this establishes the age that the pet will age up at
         }else if(tamagotchi.age[0] === tamagotchi.age[1] && tamagotchi.age[0] <= tamagotchi.age[2]){
@@ -96,6 +131,7 @@ class Pet {
             alert(petName + " has become an adult!")
         }else if(tamagotchi.age[0] >= tamagotchi.age[1] && tamagotchi.age[0] < tamagotchi.age[2]){
             ageElement.innerHTML = tamagotchi.age[0]++
+            document.getElementById("regular").src = "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"
         }else{
             ageElement.innerHTML = tamagotchi.age[3]
             boredomElement.innerHTML = tamagotchi.boredom[2]
@@ -109,7 +145,7 @@ class Pet {
 // a function that increases the pet's hunger
     hungerUp() {
         // i wanted to use arrays so that way i could change the amount of the second array position, without needing to modify my functions in multiple places if i wanted to extend the game to be longer
-        if(tamagotchi.hunger[0] < tamagotchi.hunger[1]){
+        if(tamagotchi.hunger[0] < tamagotchi.hunger[1] && document.getElementById("regular") !== "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"){
             hungerElement.innerHTML = tamagotchi.hunger[0]++
         }else{
             ageElement.innerHTML = tamagotchi.age[3]
@@ -123,7 +159,7 @@ class Pet {
     }
     // a function that increases the pet's boredom
     boredomUp() {
-        if(tamagotchi.boredom[0] < tamagotchi.boredom[1]){
+        if(tamagotchi.boredom[0] < tamagotchi.boredom[1] && document.getElementById("regular") !== "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"){
             boredomElement.innerHTML = tamagotchi.boredom[0]++
         }else{
             ageElement.innerHTML = tamagotchi.age[3]
@@ -137,7 +173,7 @@ class Pet {
     }
 
     sleepUp() {
-        if(tamagotchi.sleepiness[0] < tamagotchi.sleepiness[1]){
+        if(tamagotchi.sleepiness[0] < tamagotchi.sleepiness[1] && document.getElementById("regular") !== "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"){
             sleepinessElement.innerHTML = tamagotchi.sleepiness[0]++
         }else{
             ageElement.innerHTML = tamagotchi.age[3]
@@ -151,7 +187,7 @@ class Pet {
     }
 
     healthDown() {
-        if(tamagotchi.health[0] > tamagotchi.health[1] ){
+        if(tamagotchi.health[0] > tamagotchi.health[1] && document.getElementById("regular") !== "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"){
             healthElement.innerHTML = tamagotchi.health[0]--
             alert("Pollution makes " + petName + "'s health get lower! Make sure he works out to keep him healthy!")
         }else{
@@ -201,7 +237,7 @@ const ageElement = document.getElementById("age")
 ageElement.innerHTML = tamagotchi.age[0]
 // this is the function that will age up the pet every few minutes
 // an if statement that says if he is dead, he can't be aged
-setInterval(tamagotchi.ageUp, 60000)
+setInterval(tamagotchi.ageUp, 30000)
 
 const healthElement = document.getElementById("health")
 healthElement.innerHTML = tamagotchi.health[0]
@@ -221,6 +257,10 @@ workoutElement.addEventListener("click", tamagotchi.workout)
 
 function changeImageBack() {
     document.getElementById("regular").src = "https://i.giphy.com/nrY3TgN3JNbUs.webp"
+}
+// adding another function to change the image back after the pet has become an adult
+function changeImageToEvolved() {
+    document.getElementById("regular").src = "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"
 }
 
 // adding an interval to activate the healthdown function to simulate polution
@@ -279,3 +319,23 @@ setInterval(tamagotchi.healthDown, 60000)
 // }
 
 // if(document.querySelector("img" === document.getElementById("")))
+// 
+
+// this is some code i wrote that didn't end up working like i wanted it to. i believe it's because the conditionals don't make sense?
+// if(tamagotchi.age[0] <= 20){
+//     //     setInterval(tamagotchi.ageUp, 3000)
+//     // }else if(document.getElementById("regular").src === "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"){
+//     //     console.log(petName + " is no more")
+//     // }else{
+//     //     console.log(petName + " is no more")
+//     // }
+// this is some more set interval stuff that didn't work for some reason
+// if(document.getElementById("regular").src !== "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"){
+//     setInterval(tamagotchi.ageUp, 3000)
+// }else if(document.getElementById("regular").src === "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"){
+//     console.log(petName + " is done")
+// }else{
+//     console.log(petName + " is done for today")
+// }
+// 
+    
