@@ -126,3 +126,11 @@ p {
     border-radius: 50%;
     border-color: #1B2D2A;
 }
+
+#workout {
+    height: 60px;
+    width: 60px;
+    background-color: #82816D;
+    border-radius: 50%;
+    border-color: #1B2D2A;
+}
