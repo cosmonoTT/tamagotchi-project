@@ -1,6 +1,6 @@
 
 body {
-    /* font code was copied directly from adobe fonts! */
+    /* font codes copied directly from google fonts! */
     font-family: "Rubik Iso", system-ui;
     font-weight: 400;
     font-style: normal;
@@ -88,6 +88,11 @@ p {
     font-family: "Jersey 25", sans-serif;
     font-weight: 400;
     font-style: normal;
+}
+
+#alive {
+    /* color: #414066; */
+    display: none;
 }
 
 #regular {
