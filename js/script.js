@@ -31,18 +31,18 @@ class Pet {
         }else{
             // this second part of the conditional for each of the buttons changes the image displayed on the browser page
              // if the image displayed is the same as the one referenced in the HTML
-            if(document.getElementById("regular").src === "https://i.giphy.com/nrY3TgN3JNbUs.webp"){
+            if(document.getElementById("regular").src === regularImage){
                 // then subract from the hunger
                 hungerElement.innerHTML = tamagotchi.hunger[0]--
                 // change the source to a different gif
-                document.getElementById("regular").src = "https://i.giphy.com/1iqhMAmOgfQRd9M5Va.webp"
+                document.getElementById("regular").src = feedImage
                 // and after 15 seconds, revert to normal settings
                 setTimeout(changeImageBack, 15000)
                 // if the image displayed is the evolved image
-            }else if(document.getElementById("regular").src === "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"){
+            }else if(document.getElementById("regular").src === evolvedImage){
                 // then do the same thing as before
                 hungerElement.innerHTML = tamagotchi.hunger[0]--
-                document.getElementById("regular").src = "https://i.giphy.com/1iqhMAmOgfQRd9M5Va.webp"
+                document.getElementById("regular").src = feedImage
                 // but change the image back to evolved
                 setTimeout(changeImageToEvolved, 15000)
                 // making sure the button can be pressed multiple times after the pet reaches adulthood
@@ -62,13 +62,13 @@ class Pet {
         }else if(tamagotchi.boredom[0] === tamagotchi.boredom[1]){
             alert(petName + " died of boredom! :(")
         }else{
-            if(document.getElementById("regular").src === "https://i.giphy.com/nrY3TgN3JNbUs.webp"){
+            if(document.getElementById("regular").src === regularImage){
                 boredomElement.innerHTML = tamagotchi.boredom[0]--
-                document.getElementById("regular").src = "https://i.giphy.com/nPu9aQYq1dQbu.webp"
+                document.getElementById("regular").src = playImage
                 setTimeout(changeImageBack, 15000)
-            }else if(document.getElementById("regular").src === "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"){
+            }else if(document.getElementById("regular").src === evolvedImage){
                 boredomElement.innerHTML = tamagotchi.boredom[0]--
-                document.getElementById("regular").src = "https://i.giphy.com/nPu9aQYq1dQbu.webp"
+                document.getElementById("regular").src = playImage
                 setTimeout(changeImageToEvolved, 15000)
             }else if(tamagotchi.age[0] >= tamagotchi.age[1]){
                 changeImageToEvolved()
@@ -83,13 +83,13 @@ class Pet {
             alert(petName + " isn't tired right now.")
             changeImageBack()
         }else{
-            if(document.getElementById("regular").src === "https://i.giphy.com/nrY3TgN3JNbUs.webp") {
+            if(document.getElementById("regular").src === regularImage) {
             sleepinessElement.innerHTML = tamagotchi.sleepiness[0]--
-            document.getElementById("regular").src = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWp4aW1xNjU0YnJ4MGxkeHY0Y3RuaWQ2ajhxOGpidzEwOHd0aG82ciZlcD12MV9naWZzX3NlYXJjaCZjdD1z/oaCM98FQcTl5qbs4kb/giphy.webp"
+            document.getElementById("regular").src = sleepImage
             setTimeout(changeImageBack, 15000)
-            }else if(document.getElementById("regular").src === "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"){
+            }else if(document.getElementById("regular").src === evolvedImage){
                 sleepinessElement.innerHTML = tamagotchi.sleepiness[0]--
-            document.getElementById("regular").src = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWp4aW1xNjU0YnJ4MGxkeHY0Y3RuaWQ2ajhxOGpidzEwOHd0aG82ciZlcD12MV9naWZzX3NlYXJjaCZjdD1z/oaCM98FQcTl5qbs4kb/giphy.webp"
+            document.getElementById("regular").src = sleepImage
             setTimeout(changeImageToEvolved, 15000)
             }else if(tamagotchi.age[0] > tamagotchi.age[1]){
                 changeImageToEvolved()
@@ -101,13 +101,13 @@ class Pet {
 // adding a new function that will make the pet workout
     workout() {
         if(tamagotchi.health[0] <= 10){
-                if(document.getElementById("regular").src === "https://i.giphy.com/nrY3TgN3JNbUs.webp"){
+                if(document.getElementById("regular").src === regularImage){
                 healthElement.innerHTML = tamagotchi.health[0]++
-                document.getElementById("regular").src = "https://media4.giphy.com/media/xOcAp5kMjBlHvp53gw/giphy.webp?cid=ecf05e477wku79zdx2x9pe1en5vausp72yx5sgwigmhywlso&ep=v1_gifs_search&rid=giphy.webp&ct=s"
+                document.getElementById("regular").src = workoutImage
                 setTimeout(changeImageBack, 15000)
-            }else if(document.getElementById("regular").src === "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"){
+            }else if(document.getElementById("regular").src === evolvedImage){
                 healthElement.innerHTML = tamagotchi.health[0]++
-                document.getElementById("regular").src = "https://media4.giphy.com/media/xOcAp5kMjBlHvp53gw/giphy.webp?cid=ecf05e477wku79zdx2x9pe1en5vausp72yx5sgwigmhywlso&ep=v1_gifs_search&rid=giphy.webp&ct=s"
+                document.getElementById("regular").src = workoutImage
                 setTimeout(changeImageToEvolved, 15000)
             }else if(tamagotchi.age[0] > tamagotchi.age[1]){
                 changeImageToEvolved()
@@ -121,7 +121,7 @@ class Pet {
             hungerElement.innerHTML = tamagotchi.hunger[2]
             healthElement.innerHTML = tamagotchi.health[2]
             alert("You have overworked" + petName +"! You're the worst person ever, and you should think about your actions!")
-            document.getElementById("regular").src = "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"
+            document.getElementById("regular").src = unAlivedImage
         }
     }
 // a function that ages the pet up
@@ -137,7 +137,7 @@ class Pet {
         }else if(tamagotchi.age[0] >= tamagotchi.age[1] && tamagotchi.age[0] < tamagotchi.age[2]){
             // this changes the sprite to the aged up version
             ageElement.innerHTML = tamagotchi.age[0]++
-            document.getElementById("regular").src = "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"
+            document.getElementById("regular").src = evolvedImage
         }else{
             ageElement.innerHTML = tamagotchi.age[3]
             boredomElement.innerHTML = tamagotchi.boredom[2]
@@ -145,9 +145,9 @@ class Pet {
             hungerElement.innerHTML = tamagotchi.hunger[2]
             healthElement.innerHTML = tamagotchi.health[2]
             alert(petName + " has died of old age! you were a good parent!")
-            document.getElementById("regular").src = "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"
-        }
+            document.getElementById("regular").src = unAlivedImage
     }
+}
 // a function that increases the pet's hunger
     hungerUp() {
         // i wanted to use arrays so that way i could change the amount of the second array position, without needing to modify my functions in multiple places if i wanted to extend the game to be longer
@@ -160,7 +160,7 @@ class Pet {
             hungerElement.innerHTML = tamagotchi.hunger[2]
             healthElement.innerHTML = tamagotchi.health[2]
             alert(petName + " has died of hunger!")
-            document.getElementById("regular").src = "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"
+            document.getElementById("regular").src = unAlivedImage
         }
     }
     // a function that increases the pet's boredom
@@ -169,7 +169,7 @@ class Pet {
             boredomElement.innerHTML = tamagotchi.boredom[0]++
         }else{
             alert(petName + " has died of boredom! Congratulations, you found the secret ending!")
-            document.getElementById("regular").src = "https://media3.giphy.com/media/E51rI2c3s5zGg/200w.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=200w.webp&ct=s"
+            document.getElementById("regular").src = unAlivedImage
             return tamagotchi.alive === false
         }
     }
@@ -184,7 +184,7 @@ class Pet {
             hungerElement.innerHTML = tamagotchi.hunger[2]
             healthElement.innerHTML = tamagotchi.health[2]
             alert(petName + " has died of sleep deprivation! Was it that hard to turn off the lights?")
-            document.getElementById("regular").src = "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"
+            document.getElementById("regular").src = unAlivedImage
         }
     }
 // a function that decreases the pet's health (just to make it more fun!)
@@ -210,8 +210,7 @@ class Pet {
         sleepinessElement.innerHTML = tamagotchi.sleepiness[2]
         hungerElement.innerHTML = tamagotchi.hunger[2]
         healthElement.innerHTML = tamagotchi.health[2]
-        document.getElementById("regular").src = "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"
-    }else{
+        document.getElementById("regular").src = unAlivedImage
 
         }
     }
@@ -281,6 +280,15 @@ function changeImageToEvolved() {
 
 // adding an interval to activate the healthdown function to simulate polution
 setInterval(tamagotchi.healthDown, 60000)
+
+// declaring the variable for the images
+const regularImage = "https://i.giphy.com/nrY3TgN3JNbUs.webp"
+const feedImage = "https://i.giphy.com/1iqhMAmOgfQRd9M5Va.webp"
+const evolvedImage = "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"
+const playImage = "https://i.giphy.com/nPu9aQYq1dQbu.webp"
+const sleepImage = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWp4aW1xNjU0YnJ4MGxkeHY0Y3RuaWQ2ajhxOGpidzEwOHd0aG82ciZlcD12MV9naWZzX3NlYXJjaCZjdD1z/oaCM98FQcTl5qbs4kb/giphy.webp"
+const workoutImage = "https://media4.giphy.com/media/xOcAp5kMjBlHvp53gw/giphy.webp?cid=ecf05e477wku79zdx2x9pe1en5vausp72yx5sgwigmhywlso&ep=v1_gifs_search&rid=giphy.webp&ct=s"
+const unAlivedImage = "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.webp?cid=ecf05e4739iv3hb392bcm4fc7xzh3z8ibnbayswak70t8766&ep=v1_gifs_search&rid=giphy.webp&ct=s"
 
 // my code graveyard
 
