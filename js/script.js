@@ -165,6 +165,8 @@ class Pet {
         }else if(document.getElementById("regular").src === unAlivedImage){
             console.log(petName + " is no more")
             deathScreen()
+        }else if(tamagotchi.hunger[0] !== tamagotchi.hunger[1] && document.getElementById("regular").src === unAlivedImage){
+            deathScreen()
         }else if(tamagotchi.hunger[0] === tamagotchi.hunger[1]){
             alert(petName + " has died of hunger!")
             deathScreen()
@@ -193,6 +195,8 @@ class Pet {
         }else if(document.getElementById("regular").src === unAlivedImage){
             console.log(petName + " is no more")
             deathScreen()
+        }else if(tamagotchi.sleepiness[0] !== tamagotchi.sleepiness[1] && document.getElementById("").src === unAlivedImage){
+            deathScreen()
         }else if(sleepinessElement === tamagotchi.sleepiness[1]){
             alert(petName + " has died of sleepiness!")
             deathScreen()
@@ -207,6 +211,8 @@ class Pet {
             alert("Pollution makes " + petName + "'s health get lower! Make sure he works out to keep him healthy!")
         }else if(document.getElementById("regular").src === unAlivedImage){
             console.log(petName + " is no more")
+            deathScreen()
+        }else if(tamagotchi.sleepiness[0] !== tamagotchi.sleepiness[1] && document.getElementById("regular").src === unAlivedImage){
             deathScreen()
         }else if(healthElement === tamagotchi.health[1]){
             deathScreen()
