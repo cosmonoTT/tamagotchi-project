@@ -32,6 +32,7 @@ class Pet {
             // this second part of the conditional for each of the buttons changes the image displayed on the browser page
              // if the image displayed is the same as the one referenced in the HTML
             if(document.getElementById("regular").src === regularImage){
+                
                 // then subract from the hunger
                 hungerElement.innerHTML = tamagotchi.hunger[0]--
                 // change the source to a different gif
@@ -318,15 +319,22 @@ alert("Press any button to begin!")
 
 // a function to animate the pet
 
-// function animate() {
-//     if(document.getElementById("regular").src === regularImage || document.getElementById("regular").src === evolvedImage){
-//         $("#regular").
-//     }
-// }
+function animate() {
+    if(document.getElementById("regular").src === regularImage || document.getElementById("regular").src === evolvedImage){
+        $("img").animate({
+            top:"-65%",
+        })
+        $("img").animate({
+            top:"-60%"
+        })
+    }else{
+
+    }
+}
 
 // // animate()
 
-// setInterval(animate, 1000)
+setInterval(animate, 4000)
 
 // my code graveyard
 
@@ -410,4 +418,12 @@ alert("Press any button to begin!")
 //     if(aliveElement === true){
 //         document.
 //     }
+// }
+// i thought i would use this in my animate function, but i did not end up needing it!, the animate function ended up  making him look like he was jumping up and down, so i was satisfied with the way it looked!
+// another function to return the animation to it's place
+// will be used as a callback
+// function returnSprite() {
+//     $("img").animate({
+//         top:"-50"
+//     })
 // }
