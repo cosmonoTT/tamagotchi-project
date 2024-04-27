@@ -139,7 +139,7 @@ class Pet {
         // giving my pet an age limit of the second array string
         // also making sure the function only runs if the pet isn't busy doing something else
         // and that the function won't run if the pet is no longer alive
-        if(tamagotchi.age[0] < tamagotchi.age[1] && document.getElementById("regular").src !== unAlivedImage && document.getElementById("regular").src === regularImage || tamagotchi.age[0] < tamagotchi.age[1] && document.getElementById("regular").src !== unAlivedImage && document.getElementById("regular").src === evolvedImage){
+        if(tamagotchi.age[0] < tamagotchi.age[1] && document.getElementById("regular").src !== unAlivedImage && document.getElementById("regular").src === regularImage || tamagotchi.age[0] < tamagotchi.age[2] && document.getElementById("regular").src !== unAlivedImage && document.getElementById("regular").src === evolvedImage){
             // this adds 1 to the age every time the function is invoked in the setInterval()
             ageElement.innerHTML = tamagotchi.age[0]++
             // this establishes the age that the pet will age up at
@@ -221,6 +221,7 @@ class Pet {
             console.log(petName + " is busy")
         }
     }
+
 }
 // instantiating my new tamagotchi
 const tamagotchi = new Pet("")
@@ -313,14 +314,19 @@ const unAlivedImage = "https://media0.giphy.com/media/tfnfQi1gFonKZWmt2c/giphy.w
 const aliveElement = document.getElementById("alive")
 aliveElement.innerHTML = tamagotchi.alive[0]
 
-document.getElementById("image").src = regularImage
+alert("Press any button to begin!")
 
-// a function that will animate the guy
-// function animatePet() {
-//     if(aliveElement === true){
-//         document.
+// a function to animate the pet
+
+// function animate() {
+//     if(document.getElementById("regular").src === regularImage || document.getElementById("regular").src === evolvedImage){
+//         $("#regular").
 //     }
 // }
+
+// // animate()
+
+// setInterval(animate, 1000)
 
 // my code graveyard
 
@@ -394,4 +400,14 @@ document.getElementById("image").src = regularImage
 // tamagotchi.hunger
 // if(document.getElementById("age") === 10){
 //     document.getElementById("regular").src = "https://i.giphy.com/dtBleLxGbWhKfzySB7.webp"
+// }
+
+// this didn't work
+// document.getElementById("image").src = regularImage
+
+// a function that will animate the guy
+// function animatePet() {
+//     if(aliveElement === true){
+//         document.
+//     }
 // }
