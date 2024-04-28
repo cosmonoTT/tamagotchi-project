@@ -90,10 +90,6 @@ p {
     font-style: normal;
 }
 
-#alive {
-    display: none;
-}
-
 #regular {
     position: relative;
     top: -60%;
@@ -103,6 +99,12 @@ p {
 img {
     top: 50%;
     bottom: 50%;
+}
+
+.restart {
+    position: absolute;
+    bottom: 45%;
+    left: 5%;
 }
 
 .buttons {
@@ -147,4 +149,16 @@ img {
     background-color: #82816D;
     border-radius: 50%;
     border-color: #1B2D2A;
+}
+
+#restart {
+    height: 60px;
+    width: 60px;
+    background-color: #82816D;
+    border-radius: 50%;
+    border-color: #1B2D2A;
+    left: 20%;
+    right: 80%;
+    top: 50%;
+    bottom: 30%;
 }
