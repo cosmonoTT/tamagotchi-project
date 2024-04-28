@@ -310,7 +310,7 @@ class Pet {
 // a function to change the screen properties back to the initialization screen
     startScreen() {
         // a conditional stating that if the image is the unalived image
-        if(document.getElementById("regular").src === this.unAlivedImage){
+        if(document.getElementById("regular").src === tamagotchi.unAlivedImage){
         // reset the properties
         tamagotchi.health[0] = 5
         tamagotchi.hunger[0] = 5
