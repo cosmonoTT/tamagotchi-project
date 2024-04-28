@@ -285,7 +285,7 @@ class Pet {
         // if the health is greater than 5, and the image is not the deceased one
         if(tamagotchi.health[0] > tamagotchi.health[1] && document.getElementById("regular").src !== unAlivedImage){
             // subtract 1 from health
-            tamagotchi.health[0] += 1
+            tamagotchi.health[0] -= 1
             healthElement.innerHTML = tamagotchi.health[0]
             // and alert the user about pollution
             alert("Pollution makes " + petName + "'s health get lower! Make sure he works out to keep him healthy!")

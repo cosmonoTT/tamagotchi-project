@@ -91,7 +91,6 @@ p {
 }
 
 #alive {
-    /* color: #414066; */
     display: none;
 }
 
@@ -100,14 +99,6 @@ p {
     top: -60%;
     bottom: 20;
 }
-
-/* .show {  
-    display: contents;
-} */
-
-/* .hide {
-    display: none;
-} */
 
 img {
     top: 50%;
