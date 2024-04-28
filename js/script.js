@@ -97,6 +97,7 @@ class Pet {
             tamagotchi.deathScreen()
             // alert the user
             alert(petName + " has slept to death! Tragic!")
+            // if the image is the deceased image
         }else if(document.getElementById("regular").src === tamagotchi.unAlivedImage){
         // then alert the user
             alert(petName + " can't sleep anymore!" + petName + " is gone!")
@@ -249,15 +250,23 @@ class Pet {
     }
 // a function that decreases the pet's health (just to make it more fun!)
     healthDown() {
-        // if the health is greater than 5, and the image is not the deceased one
-        if(tamagotchi.health[0] > tamagotchi.health[1] && document.getElementById("regular").src !== tamagotchi.unAlivedImage){
+        // if the health is greater than 5, and the image is not the deceased one, and the age is less than or equal to 9
+        if(tamagotchi.health[0] > tamagotchi.health[1] && document.getElementById("regular").src !== tamagotchi.
+        unAlivedImage && tamagotchi.age[0] <= tamagotchi.age[1]){
             // subtract 1 from health
             tamagotchi.health[0] -= 1
             // and display it in the HTML
             healthElement.innerHTML = tamagotchi.health[0]
             // and alert the user about pollution
             alert("Pollution makes " + petName + "'s health get lower! Make sure he works out to keep him healthy!")
-            // if the image is the deceased image
+            // if the same as above applies, but the tamagotchi is evolved
+        }else if(tamagotchi.health[0] > tamagotchi.health[1] && document.getElementById("regular").src !== tamagotchi.unAlivedImage && tamagotchi.age[0] > tamagotchi.age[1]){
+            // subtract 2 from health
+            tamagotchi.health[0] -= 2
+            // display it in the HTML
+            healthElement.innerHTML = tamagotchi.health[0]
+            // and alert the user
+            alert("Oh no! In " + petName + "'s age, pollution is getting worse! He'll need to work out twice as hard to stay fit!")
         }else if(document.getElementById("regular").src === tamagotchi.unAlivedImage){
             // console.log
             console.log(petName + " is no more")
@@ -271,6 +280,7 @@ class Pet {
         }else if(document.getElementById("regular").src === tamagotchi.workoutImage){
             // do nothing
             console.log(petName + " is working out!")
+            // if the tamagotchi is evolved
         }else{
             console.log(petName + " is busy")
         }
@@ -395,16 +405,16 @@ resetElement.addEventListener("click", tamagotchi.startScreen)
 // I can edit any of them to change the game time
 // for my animate function, it goes off every 4 seconds
 setInterval(tamagotchi.animate, 4000)
-// my ageUp function is every 45 seconds
-setInterval(tamagotchi.ageUp, 45000)
-// hungerUp function is also every 30 seconds
-setInterval(tamagotchi.hungerUp, 30000)
-// boredom goes up every 3 minutes (i wanted it to be very difficult to die of boredon)
-setInterval(tamagotchi.boredomUp, 180000)
-// health goes down every minute
-setInterval(tamagotchi.healthDown, 60000)
-// sleep goes up every 1.5 minutes
-setInterval(tamagotchi.sleepUp, 90000)
+// my ageUp function is every 20 seconds
+setInterval(tamagotchi.ageUp, 20000)
+// hungerUp function is also every 15 seconds
+setInterval(tamagotchi.hungerUp, 15000)
+// boredom goes up every 1.5 minutes (i wanted it to be very difficult to die of boredon)
+setInterval(tamagotchi.boredomUp, 90000)
+// health goes down 30 seconds
+setInterval(tamagotchi.healthDown, 30000)
+// sleep goes up every 45 seconds
+setInterval(tamagotchi.sleepUp, 45000)
 
 // an alert to let the user know what's up
 alert("Press any button to begin!")
