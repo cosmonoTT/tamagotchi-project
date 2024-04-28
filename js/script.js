@@ -19,18 +19,16 @@ class Pet {
 
 // this is my first function that feeds the pet
     feed() {
-        // these first conditionals are only to keep the page from displaying negative numbers or numbers greater than 10
-        // if the tamagotchi's hunger is 0
-        if(hungerElement === tamagotchi.hunger[0]){
+        // if the hunger is equal to zero
+        if(tamagotchi.hunger[0] === 0){
             // alert "your pet is full"
             alert(petName + " is full!")
             // else if tamagotchi's hunger is 10
-        }else if(hungerElement === tamagotchi.hunger[1]){
-            // your pet died :(
-            alert(petName + " died :(")
+        }else if(tamagotchi.hunger[0] === tamagotchi.hunger[1]){
+            // does this work?
+            console.log("does this work?")
         }else{
-            // this second part of the conditional for each of the buttons changes the image displayed on the browser page
-             // if the image displayed is the same as the one referenced in the HTML
+             // if the image displayed is the same as the regular image
             if(document.getElementById("regular").src === regularImage){
                 // then subract from the hunger
                 hungerElement.innerHTML = tamagotchi.hunger[0]--
@@ -43,12 +41,13 @@ class Pet {
                 document.getElementById("regular").src = feedImage
                 // but change the image back to evolved
                 setTimeout(changeImageToEvolved, 15000)
-                // making sure the button can be pressed multiple times after the pet reaches adulthood
+                // if the image is the unalived image
             }else if(document.getElementById("regular").src === unAlivedImage){
+                // alert the user
                 alert(petName + " can't eat anymore!" + petName + " is gone!")
                 deathScreen()
             }else if(tamagotchi.age[0] >= 9){
-                // these are 2 callbacks to functions i declared in this JS file
+                // change image back
                 changeImageToEvolved()
             }else{
                 // this is a toggle for the button, so you can switch between modes
@@ -167,22 +166,23 @@ class Pet {
     }
 // a function that ages the pet up
     ageUp() {
-        // if the age is less than 10, and the image displayed is the regular image
-        if(tamagotchi.age[0] < tamagotchi.age[1]  && document.getElementById("regular").src === regularImage || 
-        // or if the age is less than 20, and the image displayed is the evolved image
-        tamagotchi.age[0] < tamagotchi.age[2] && document.getElementById("regular").src === evolvedImage){
+        // if the age is less than 10, and the image displayed is not the deceased image
+        if(tamagotchi.age[0] < tamagotchi.age[1]  && document.getElementById("regular").src !== unAlivedImage || 
+        // or if the age is less than 20, and the image displayed is the not the deceased image
+        tamagotchi.age[0] < tamagotchi.age[2] && document.getElementById("regular").src !== unAlivedImage){
             // add 1 to the age
             ageElement.innerHTML = tamagotchi.age[0]++
             // if the pet is 10
         }else if(tamagotchi.age[0] === tamagotchi.age[1]){
-            // change the age element to array position 2
+            // add 1
             ageElement.innerHTML = tamagotchi.age[0]++
-            // then alert the user
+            // alert the user
             alert(petName + " has become an adult!")
             // and change the image to evolved
             document.getElementById("regular").src = evolvedImage
             // if the age is less than 20 and the image is the deceased image
         }else if(document.getElementById("regular").src === unAlivedImage){
+            // console log
             console.log(petName + " is no more")
             // if the age is 20
         }else if(tamagotchi.age[0] === tamagotchi.age[2]){
@@ -196,8 +196,8 @@ class Pet {
 }
 // a function that increases the pet's hunger
     hungerUp() {
-        // a conditional statement that says when the hunger is less than 10 and the image is either the regular or evolved image
-        if(tamagotchi.hunger[0] < tamagotchi.hunger[1] && document.getElementById("regular").src === regularImage || tamagotchi.hunger[0] < tamagotchi.hunger[1] && document.getElementById("regular").src === evolvedImage){
+        // a conditional statement that says when the hunger is less than 10 and the image is not the unalived image
+        if(tamagotchi.hunger[0] < tamagotchi.hunger[1] && document.getElementById("regular").src !== unAlivedImage){
             // add 1 to the hunger
             hungerElement.innerHTML = tamagotchi.hunger[0]++
             // if the image is the unalived image
@@ -210,15 +210,18 @@ class Pet {
             alert(petName + " has died of hunger!")
             // and display the death screen
             deathScreen()
-            // otherwise if the image displayed is neither the evolved or regular image
+            //if the image displayed is the feed image
+        }else if(document.getElementById("regular").src === feedImage){
+            // do nothing
+            console.log(petName + " is eating!")
         }else{
            console.log(petName + " is busy!")
         }
     }
     // a function that increases the pet's boredom
     boredomUp() {
-        // a conditional statement that says if the boredom is less than 10, and the image is either the regular or evolved image
-        if(tamagotchi.boredom[0] < tamagotchi.boredom[1] && document.getElementById("regular").src === regularImage || tamagotchi.boredom[0] < tamagotchi.boredom[1] && document.getElementById("regular") === evolvedImage){
+        // a conditional statement that says if the boredom is less than 10, and the image is not the deceased image
+        if(tamagotchi.boredom[0] < tamagotchi.boredom[1] && document.getElementById("regular").src !== unAlivedImage){
             // add 1 to boredom
             boredomElement.innerHTML = tamagotchi.boredom[0]++
             // if the image is the unalived image
@@ -231,14 +234,18 @@ class Pet {
             alert(petName + " has died of boredom! Congratulations, this is the secret ending!")
             // invoke deathscreen function
             deathScreen()
+            // if the image is the play image
+        }else if(document.getElementById("regular").src === playImage){
+            // do nothing
+            console.log(petName + " is playing!")
         }else{
             console.log(petName + " is busy!")
         }
     }
 // a function that increases the pet's sleep
     sleepUp() {
-        // a conditional that says that if the sleep is less than 10, and the image is either the regular or evolved image
-        if(tamagotchi.sleepiness[0] < tamagotchi.sleepiness[1] && document.getElementById("regular").src === regularImage || tamagotchi.sleepiness[0] < tamagotchi.sleepiness[1] && document.getElementById("regular").src === evolvedImage){
+        // a conditional that says that if the sleep is less than 10, and the image is not the deceased one
+        if(tamagotchi.sleepiness[0] < tamagotchi.sleepiness[1] && document.getElementById("regular").src !== unAlivedImage){
             // add 1 to sleepiness
             sleepinessElement.innerHTML = tamagotchi.sleepiness[0]++
             // if the image displayed is the deceased image
@@ -251,14 +258,18 @@ class Pet {
             alert(petName + " has died of sleepiness!")
             // invoke deathscreen
             deathScreen()
+            // if the image is the sleep image
+        }else if(document.getElementById("regular").src === sleepImage){
+            // do nothing
+            console.log(petName + " is sleeping!")
         }else{
             console.log(petName + " is busy")
         }
     }
 // a function that decreases the pet's health (just to make it more fun!)
     healthDown() {
-        // if the health is greater than 5, and the image is either regular or evolved
-        if(tamagotchi.health[0] > tamagotchi.health[1] && document.getElementById("regular").src === regularImage || tamagotchi.health[0] > tamagotchi.health[1] && document.getElementById("regular").src === evolvedImage){
+        // if the health is greater than 5, and the image is not the deceased one
+        if(tamagotchi.health[0] > tamagotchi.health[1] && document.getElementById("regular").src !== unAlivedImage){
             // subtract 1 from health
             healthElement.innerHTML = tamagotchi.health[0]--
             // and alert the user about pollution
@@ -273,6 +284,10 @@ class Pet {
             deathScreen()
             // and alert the user about climate change
             alert(petName + " has died from overpollution! Dedicate yourself to climate change since his sad face has you so moved!")
+            // if the image is the workout image
+        }else if(document.getElementById("regular").src === workoutImage){
+            // do nothing
+            console.log(petName + " is working out!")
         }else{
             console.log(petName + " is busy")
         }
