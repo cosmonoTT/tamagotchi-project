@@ -189,14 +189,14 @@ class Pet {
             alert(petName + " has become an adult!")
             // and change the image to evolved
             document.getElementById("regular").src = evolvedImage
-            // if the age is less than 20 and the image is 
-        }else if(tamagotchi.age[1] < tamagotchi.age[2] && document.getElementById("regular").src === evolvedImage){
-            ageElement.innerHTML = tamagotchi.age[1]++
+            // if the age is less than 20 and the image is the deceased image
         }else if(document.getElementById("regular").src === unAlivedImage){
             console.log(petName + " is no more")
+            // if the age is 20
+        }else if(tamagotchi.age[0] === tamagotchi.age[2]){
+            // deathscreen
             deathScreen()
-        }else if(tamagotchi.age[1] === tamagotchi.age[2]){
-            deathScreen()
+            // old age alert
             alert(petName + " has died of old age! you were a good parent!")
         }else{
             console.log(petName + " is busy!")
