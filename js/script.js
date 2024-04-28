@@ -36,8 +36,6 @@ class Pet {
                 hungerElement.innerHTML = tamagotchi.hunger[0]--
                 // change the source to a different gif
                 document.getElementById("regular").src = feedImage
-                // and after 15 seconds, revert to normal settings
-                setTimeout(changeImageBack, 15000)
                 // if the image displayed is the evolved image
             }else if(document.getElementById("regular").src === evolvedImage){
                 // then do the same thing as before
@@ -72,8 +70,6 @@ class Pet {
                 boredomElement.innerHTML = tamagotchi.boredom[0]--
                 // and change the image to the play image
                 document.getElementById("regular").src = playImage
-                // after 15 seconds, change back to regular
-                setTimeout(changeImageBack, 15000)
                 // if the source image is the evolved image
             }else if(document.getElementById("regular").src === evolvedImage){
                 // subtract one from boredom
@@ -109,8 +105,6 @@ class Pet {
                 sleepinessElement.innerHTML = tamagotchi.sleepiness[0]--
             // change the image to the sleep image
                 document.getElementById("regular").src = sleepImage
-            // after 15 seconds, change the image back
-                setTimeout(changeImageBack, 15000)
             // else if the image displayed is the evolved image
             }else if(document.getElementById("regular").src === evolvedImage){
                 // subtract 1 from sleepiness  
@@ -143,8 +137,6 @@ class Pet {
                 healthElement.innerHTML = tamagotchi.health[0]++
                 // and change the image to workout image
                 document.getElementById("regular").src = workoutImage
-                // after 15 seconds, change the image back
-                setTimeout(changeImageBack, 15000)
                 // else if the image displayed is the evolved image
             }else if(document.getElementById("regular").src === evolvedImage){
                 // add 1 to health
