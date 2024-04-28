@@ -89,3 +89,7 @@
 //         top:"-50"
 //     })
 // }
+
+// function randomUp(metrics) {
+//     metricsElement.innerHTML = tamagotchi.metrics[]
+// }

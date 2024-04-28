@@ -5,13 +5,13 @@ class Pet {
         name = this.name
     }
 // arrays for the conditionals
-    health = [5, 0, "dead"]
+    health = [5, 1, "dead"]
 
-    hunger = [5, 10, "dead"]
+    hunger = [5, 9, "dead"]
 
-    sleepiness = [5, 10, "dead"]
+    sleepiness = [5, 9, "dead"]
 
-    boredom = [5, 10, "dead"]
+    boredom = [5, 9, "dead"]
 
     age = [0, 9, 20, "dead"]
 // declaring the variables for the images
@@ -45,7 +45,7 @@ class Pet {
             alert("You have overfed " + petName + "! How awful!")
         // and initiate the deathscreen
             tamagotchi.deathScreen()
-        }else if(tamagotchi.age[0] >= 9){
+        }else if(tamagotchi.age[0] > tamagotchi.age[1]){
         // change image back
             tamagotchi.changeImageToEvolved()
         }else{
@@ -73,7 +73,7 @@ class Pet {
         // alert the user
             alert(petName + " can't play anymore!" + petName + " is gone!")
         // if the pet is older than 9
-        }else if(tamagotchi.age[0] >= 9){
+        }else if(tamagotchi.age[0] > tamagotchi.age[1]){
         // change image to evolved
             tamagotchi.changeImageToEvolved()
         }else{
@@ -101,7 +101,7 @@ class Pet {
         // then alert the user
             alert(petName + " can't sleep anymore!" + petName + " is gone!")
         // otherwise if the tamagotchi is older than 9
-        }else if(tamagotchi.age[0] > 9){
+        }else if(tamagotchi.age[0] > tamagotchi.age[1]){
         // change image back to evolved
             tamagotchi.changeImageToEvolved()
         }else{
@@ -119,7 +119,7 @@ class Pet {
         // and change the image to workout image
             document.getElementById("regular").src = tamagotchi.workoutImage
         // else if the image displayed is the evolved image
-        }else if(tamagotchi.health[0] === 9 && document.getElementById("regular").src === regularImage || tamagotchi.health[0] === 9 && document.getElementById("regular").src === this.evolvedImage){
+        }else if(tamagotchi.health[0] === 9 && document.getElementById("regular").src === tamagotchi.regularImage || tamagotchi.health[0] === 9 && document.getElementById("regular").src === tamagotchi.evolvedImage){
             // invoke deathscreen
             tamagotchi.deathScreen()
             // alert the user
@@ -128,7 +128,7 @@ class Pet {
         // alert the user
             alert(petName + " can't workout anymore!" + petName + " is gone!")
         // if the tamagotchi is older than 9
-        }else if(tamagotchi.age[0] > 9){
+        }else if(tamagotchi.age[0] > tamagotchi.age[1]){
         // then change to evolved image
             tamagotchi.changeImageToEvolved()
         }else{
@@ -208,7 +208,7 @@ class Pet {
             // console.log
             console.log(petName + " is no more")
             // if the boredom is maxed out
-        }else if(boredomElement === tamagotchi.boredom[1]){
+        }else if(tamagotchi.boredom[0] === tamagotchi.boredom[1]){
             // alert the user
             alert(petName + " has died of boredom! Congratulations, this is the secret ending!")
             // invoke deathscreen function
@@ -309,6 +309,8 @@ class Pet {
     }
 // a function to change the screen properties back to the initialization screen
     startScreen() {
+        // a conditional stating that if the image is the unalived image
+        if(document.getElementById("regular").src === this.unAlivedImage){
         // reset the properties
         tamagotchi.health[0] = 5
         tamagotchi.hunger[0] = 5
@@ -324,6 +326,9 @@ class Pet {
         ageElement.innerHTML = tamagotchi.age[0]
         // and change the photo back to the load screen photo
         document.getElementById("regular").src = tamagotchi.loadImage
+        }else{
+            alert("Let's give " + petName + " a shot before we reset!")
+        }
     }
 }
 
